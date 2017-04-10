@@ -3,6 +3,7 @@ import application.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
@@ -13,6 +14,8 @@ import bookConfirm.BookConfirmController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +27,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodRequests;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import screenFramework.ScreenController;
 import application.BookScreen;
@@ -49,7 +53,8 @@ public class BookSecondPageController  implements Initializable, screenFramework
 	private JFXTextField Snum;
 	@FXML
 	private JFXTextField Smail;
-	
+	@FXML
+	private JFXButton hide;
 	@FXML
 	private Label lplease;
 	@FXML
@@ -100,10 +105,13 @@ public class BookSecondPageController  implements Initializable, screenFramework
 	@FXML
 	private MenuItem r5;
 	
+
+	
 	@FXML
 	public void openBookScreen(ActionEvent event) throws Exception {               
 
 		myController.setScreen(screenFramework.ScreensFramework.screen2ID);
+		 hide.setVisible(false);
 	}
 	@FXML
 	public void getItem(){
@@ -125,7 +133,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 		Lmail.setText(  Smail.getText());
 		//Lreason.setText(  pp.getText());
 		
-		 
+		hide.setVisible(false);
 		
 		
 
@@ -138,7 +146,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 		 l7.setVisible(true);
 
 
-
+	
 
 		Lsubject.setVisible(true);
 		Lname.setVisible(true);
@@ -171,7 +179,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 		 l5.setVisible(false);
 		 l6.setVisible(false);
 		 l7.setVisible(false);
-		 
+		 hide.setVisible(false);
 		 
 		Lsubject.setVisible(false);
 		Lname.setVisible(false);
@@ -255,6 +263,11 @@ public class BookSecondPageController  implements Initializable, screenFramework
 		
 		//l2.setText(BS.ltime);
 		
+		//for field student number - number keyboard will popup
+		//for field email  - email style keyboard will popup
+		 Snum.getProperties().put("vkType", "numeric");
+		 Smail.getProperties().put("vkType", "email");
+		 
 		r1.setOnAction(e->Lreason.setText("Academic Advising"));
 		r2.setOnAction(e->Lreason.setText("Personal"));
 		r3.setOnAction(e->Lreason.setText("Timetable"));
@@ -286,7 +299,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 				if(!newValue)
 				{
 					subject.validate();
-
+					hide.setVisible(true);
 				}
 			}
 		});
@@ -299,6 +312,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 				if(!newValue)
 				{
 					Snum.validate();
+					hide.setVisible(true);
 				}
 			}
 		});
@@ -311,6 +325,7 @@ public class BookSecondPageController  implements Initializable, screenFramework
 				if(!newValue)
 				{
 					Sname.validate();
+					hide.setVisible(true);
 				}
 			}
 		});
@@ -322,9 +337,68 @@ public class BookSecondPageController  implements Initializable, screenFramework
 				if(!newValue)
 				{
 					Smail.validate();
+					hide.setVisible(true);
 				}
 			}
 		});
+		
+		Smail.setOnMouseClicked(new EventHandler<Event>() {
+		    public void handle(MouseEvent me) {
+		    	hide.setVisible(true);
+		    }
+
+			@Override
+			public void handle(Event event) {
+				hide.setVisible(true);
+				
+			}
+		});
+		Sname.setOnMouseClicked(new EventHandler<Event>() {
+		    public void handle(MouseEvent me) {
+		    	hide.setVisible(true);
+		    }
+
+			@Override
+			public void handle(Event event) {
+				hide.setVisible(true);
+				
+			}
+		});
+		Snum.setOnMouseClicked(new EventHandler<Event>() {
+		    public void handle(MouseEvent me) {
+		    	hide.setVisible(true);
+		    }
+
+			@Override
+			public void handle(Event event) {
+				hide.setVisible(true);
+				
+			}
+		});
+		subject.setOnMouseClicked(new EventHandler<Event>() {
+		    public void handle(MouseEvent me) {
+		    	hide.setVisible(true);
+		    }
+
+			@Override
+			public void handle(Event event) {
+				hide.setVisible(true);
+				
+			}
+		});
+		
+		hide.setOnMouseClicked(new EventHandler<Event>() {
+		    public void handle(MouseEvent me) {
+		    	hide.setVisible(false);
+		    }
+
+			@Override
+			public void handle(Event event) {
+				hide.setVisible(false);
+				
+			}
+		});
+		
 	}
 	
 }

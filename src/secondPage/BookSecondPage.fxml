@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -264,6 +265,18 @@
                               <Insets left="100.0" top="50.0" />
                            </HBox.margin>
                         </Button>
+                        <JFXButton fx:id="hide" buttonType="RAISED" prefHeight="25.0" prefWidth="122.0" ripplerFill="#28139a" text=" " textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Khide.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </HBox>
                </children>

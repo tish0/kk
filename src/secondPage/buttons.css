@@ -24,9 +24,10 @@
 	-fx-cursor: hand;
 	-fx-text-fill: #FFFFFF;
 }
+.jfxbutton{
+	
+	-fx-background-image: url("Khide.png");
 
-.vvv {
-     -fx-text-fill: #FFFFFF;
 }
 
 
